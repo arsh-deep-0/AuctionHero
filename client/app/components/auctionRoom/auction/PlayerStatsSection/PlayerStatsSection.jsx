@@ -1,8 +1,11 @@
+import Heading from "./Heading"
 
 
 function PlayerStatsSection() {
   return (
-    <div>PlayerStatsSection</div>
+    <div>
+      <Heading/>
+    </div>
   )
 }
 
