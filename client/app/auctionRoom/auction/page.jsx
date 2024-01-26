@@ -6,15 +6,24 @@ import React from 'react'
 
 function page() {
   return (
-    <div className='flex h-screen'>
-        <div className='w-'>
+    <div className='flex h-screen '>
+        <div className='w-1/6'>
         <SideNavbar/>
         </div>
        
-        <div className='flex gap-8 justify-center items-center'>
+        <div className='flex gap-8 justify-center items-center w-5/6 bg-gray-300 text-black'>
+            <div className='w-1/4'>
             <TeamsWallet/>
+            </div>
+            <div className='w-1/4'>
             <BiddingSection />
+            </div>
+            <div className='w-1/4'>
             <PlayerStatsSection />
+            </div>
+           
+           
+           
         </div>
     </div>
   )
