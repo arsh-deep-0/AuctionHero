@@ -1,33 +1,58 @@
-import Heading from "./Heading"
-import CurrentBid from "./CurrentBid"
-import CurrentBidder from "./CurrentBidder"
-import BidTimer from "./BidTimer"
-import BidButton from "./BidButton"
-import ProgressBar from "./ProgressBar"
+import Heading from "./Heading";
+import CurrentBid from "./CurrentBid";
+import CurrentBidder from "./CurrentBidder";
+import BidTimer from "./BidTimer";
+import BidButton from "./BidButton";
+import ProgressBar from "./ProgressBar";
+import { useState } from "react";
 
 function BiddingSection() {
+  const bidData = {
+    currentBidValue: 8.2,
+    currentBidderName: "Bhaskar Mishra",
+    currentBidderTeam: "rcb",
+    totalPlayers: 31,
+    soldPlayers: 17,
+    unsoldPlayers: 4,
+  };
 
-  const bidData={
-    currentBidValue:8.2,
-    currentBidderName:'Bhaskar Mishra',
-    currentBidderTeam:'rcb',
-    totalPlayers:31,
-    soldPlayers:17,
-    unsoldPlayers:4
-  }
+  const [currentBidVal, setCurrentBidVal] = useState(0);
+
+  const bidButtonHandler = () => {
+    if (currentBidVal === 0) setCurrentBidVal(2.0);
+    else if (
+      (currentBidVal*10) % 10 == 0 || (currentBidVal*10) % 10 == 8
+    ) {
+      
+      setCurrentBidVal(currentBidVal+0.2);
+    }
+    else if (
+      (currentBidVal*10) % 10 === 2 || (currentBidVal*10) % 10 === 5
+    ) {
+      
+      setCurrentBidVal(currentBidVal+0.3);
+    }
+  };
+
   return (
     <div className="flex flex-col gap-4 items-center">
-      <Heading/>
-      <CurrentBid currentBidValue={bidData.currentBidValue}/>
-      <BidButton/>
+      <Heading />
+      <CurrentBid currentBidValue={currentBidVal} />
+      <BidButton onClick={bidButtonHandler} />
       <div className="flex gap-4">
-      <CurrentBidder currentBidderName={bidData.currentBidderName} currentBidderTeam={bidData.currentBidderTeam}/>
-      <BidTimer/>
+        <CurrentBidder
+          currentBidderName={bidData.currentBidderName}
+          currentBidderTeam={bidData.currentBidderTeam}
+        />
+        <BidTimer />
       </div>
-      <ProgressBar totalPlayers={bidData.totalPlayers} soldPlayers={bidData.soldPlayers} unsoldPlayers={bidData.unsoldPlayers}/>
-      
+      <ProgressBar
+        totalPlayers={bidData.totalPlayers}
+        soldPlayers={bidData.soldPlayers}
+        unsoldPlayers={bidData.unsoldPlayers}
+      />
     </div>
-  )
+  );
 }
 
-export default BiddingSection
+export default BiddingSection;
