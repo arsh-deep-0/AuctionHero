@@ -7,12 +7,12 @@ import React from 'react'
 
 function page() {
   return (
-    <div className='flex h-screen  bg-gray-300'>
+    <div className='flex h-screen  bg-gray-300  align-bottom'>
         <div className='w-1/6 '>
         <SideNavbar/>
         </div>
        
-        <div className='flex gap-8 justify-center items-center w-5/6 bg-gray-300 text-black'>
+        <div className='flex gap-12 justify-center  w-5/6 bg-gray-300 text-black items-center inset-8'>
             <div className='w-1/4 h-5/6'>
             <TeamsWallet/>
             </div>
