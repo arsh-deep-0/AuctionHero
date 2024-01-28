@@ -36,6 +36,10 @@
     box-shadow: 0rem 0.2rem 0.55rem 0.02rem #9743fe7e;
 }
 
+.blue-shadow-text {
+    text-shadow: 0rem 0.2rem 0.55rem 0.02rem #9743fe7e;
+}
+
 .bg-pink {
     background-color: #ff00e5;
 }
