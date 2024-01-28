@@ -40,7 +40,7 @@ function WalletContainer() {
     ];
 
     return (
-        <div className="w-full flex flex-col p-2 bg-white gap-2 rounded-md blue-shadow">
+        <div className="w-full flex flex-col p-2 bg-white gap-2 rounded-md blue-shadow min-w-72">
             {buyersData.map((buyer) => {
                 const buyerData = {
                     teamName: buyer.teamName,
