@@ -1,3 +1,4 @@
+"use client"
 import BiddingSection from '@/app/components/auctionRoom/auction/BiddingSection/BiddingSection'
 import PlayerStatsSection from '@/app/components/auctionRoom/auction/PlayerStatsSection/PlayerStatsSection'
 import SideNavbar from '@/app/components/auctionRoom/auction/SideNavbar/SideNavbar'
