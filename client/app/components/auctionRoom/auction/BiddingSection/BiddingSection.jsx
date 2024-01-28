@@ -8,11 +8,11 @@ import ProgressBar from "./ProgressBar"
 function BiddingSection() {
 
   const bidData={
-    currentBidValue:5.2,
+    currentBidValue:8.2,
     currentBidderName:'Bhaskar Mishra',
     currentBidderTeam:'rcb',
     totalPlayers:31,
-    soldPlayers:20,
+    soldPlayers:17,
     unsoldPlayers:4
   }
   return (
