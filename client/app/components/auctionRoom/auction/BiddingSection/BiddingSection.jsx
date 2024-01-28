@@ -26,9 +26,7 @@ function BiddingSection() {
       
       setCurrentBidVal(currentBidVal+0.2);
     }
-    else if (
-      (currentBidVal*10) % 10 === 2 || (currentBidVal*10) % 10 === 5
-    ) {
+    else  {
       
       setCurrentBidVal(currentBidVal+0.3);
     }
