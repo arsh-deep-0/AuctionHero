@@ -51,12 +51,14 @@ useEffect(() => {
 
       {/* timer section */}
 
+
       <div className="h-11  flex w-full justify-center gap-2  rounded-md items-center bg-black text-white text-2xl">
         <span>{String(hours).length < 2 ? "0"+String(hours) : hours}</span>
         <span>:</span>
         <span>{String(minutes).length < 2 ? "0"+String(minutes) : minutes}</span>
         <span>:</span>
         <span>{String(seconds).length < 2 ? "0"+String(seconds) : seconds}</span>
+
       </div>
 
     </div>

@@ -1,17 +1,17 @@
 import React from 'react'
 
 
-function MiddleComponent(props) {
+function MiddleComponent({name , onclick ,imgUrl}) {
     
   return (
     <button 
-    onClick={props.onClicks}
-    className='w-full flex justify-start items-center gap-2 px-3 h-11 rounded bg-blue-pink  active:bg-slate-50'>
+    onClick={onclick}
+    className='w-full flex justify-start items-center gap-2 px-3 py-1 rounded-md bg-blue-pink  active:bg-slate-50'>
         <div className='w-1/6 '>
-            <img className='w-full' src={`/resources/logos/leftNavbarLogos/${props.imgUrl}`} alt="" />
+            <img className='w-6' src={`/resources/logos/leftNavbarLogos/${imgUrl}`} alt="" />
         </div>
-        <div className='asap  text-white text-lg'>
-            {props.name}
+        <div className='asap  text-white text-md'>
+            {name}
         </div>
     </button>
   )
