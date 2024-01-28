@@ -13,17 +13,15 @@ function page() {
         </div>
        
         <div className='flex gap-8 justify-center items-center w-5/6 bg-gray-300 text-black'>
-            <div className='w-1/4 '>
+            <div className='w-1/4 h-5/6'>
             <TeamsWallet/>
             </div>
-            <div className='w-1/4'>
+            <div className='w-1/4 h-5/6'>
             <BiddingSection />
             </div>
-            <div className='w-1/4'>
+            <div className='w-1/4 h-5/6'>
             <PlayerStatsSection />
-            </div>
-           
-           
+            </div>          
            
         </div>
     </div>

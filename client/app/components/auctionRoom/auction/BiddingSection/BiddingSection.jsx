@@ -33,7 +33,7 @@ function BiddingSection() {
   };
 
   return (
-    <div className="flex flex-col gap-4 items-center">
+    <div className="flex flex-col justify-between h-full gap-4 items-center">
       <Heading />
       <CurrentBid currentBidValue={currentBidVal} />
       <BidButton onClick={bidButtonHandler} />
