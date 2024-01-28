@@ -6,13 +6,13 @@ import React from 'react'
 
 function page() {
   return (
-    <div className='flex h-screen '>
-        <div className='w-1/6'>
+    <div className='flex h-screen  bg-gray-300'>
+        <div className='w-1/6 '>
         <SideNavbar/>
         </div>
        
         <div className='flex gap-8 justify-center items-center w-5/6 bg-gray-300 text-black'>
-            <div className='w-1/4'>
+            <div className='w-1/4 '>
             <TeamsWallet/>
             </div>
             <div className='w-1/4'>
