@@ -27,7 +27,7 @@ function SideNavbar() {
 
       {/* timer section */}
 
-      <div className="h-11  flex w-full justify-center rounded-md items-center bg-black text-white text-lg">
+      <div className="py-2  flex w-full justify-center rounded-md items-center bg-blue-pink text-white text-md">
         <span> Timer component</span>
       </div>
 
