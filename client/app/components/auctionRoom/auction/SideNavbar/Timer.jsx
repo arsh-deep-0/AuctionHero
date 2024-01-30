@@ -27,7 +27,8 @@ function Timer() {
 
     
   return (
-    <div className="  flex w-full justify-center gap-2  rounded-md items-center bg-black text-white text-md px-3 py-1 border-2 border-white border-solid blue-shadow aoboshi ">
+    <div className="flex w-full justify-between gap-2  rounded-md items-center align-middle bg-black text-white text-md px-3 py-2 border-2 border-white border-solid blue-shadow aoboshi ">
+    <img src="/resources/images/tick-tock.svg" alt="" />
     <span>{String(hours).length < 2 ? "0"+String(hours) : hours}</span>
     <span>:</span>
     <span>{String(minutes).length < 2 ? "0"+String(minutes) : minutes}</span>

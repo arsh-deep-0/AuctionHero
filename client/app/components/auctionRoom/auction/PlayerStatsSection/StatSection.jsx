@@ -13,11 +13,11 @@ const StatSection = () => {
                   <p className="text-xl skew-x-[20deg] font-medium">94</p>
             </div>
 
-            <div className="flex bg-golden px-3 py-2 gap-1 -skew-x-[20deg] border-2 border-solid border-white">
+            <div className="flex blue-shadow bg-golden px-3 py-2 gap-1 -skew-x-[20deg] border-2 border-solid border-white">
                   <img className="w-6 skew-x-[20deg]" src="/resources/playerImages/Group 295.svg" alt="" />
                   <p className="text-xl skew-x-[20deg] font-medium">0</p>
             </div>
-            <div className="flex bg-golden px-3 py-2 gap-1 -skew-x-[20deg] border-2 border-solid border-white">
+            <div className="flex blue-shadow bg-golden px-3 py-2 gap-1 -skew-x-[20deg] border-2 border-solid border-white">
                   <img className="w-6 skew-x-[20deg]" src="/resources/playerImages/Group 273.svg" alt="" />
                   <p className="text-xl skew-x-[20deg] font-medium">0</p>
 

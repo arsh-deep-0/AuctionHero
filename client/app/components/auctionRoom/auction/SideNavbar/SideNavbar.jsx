@@ -33,7 +33,7 @@ function SideNavbar() {
         <div className="w-full flex flex-col gap-2">
 
           {headings.map((heading, index) =>
-            <MiddleComponent key={heading} onclick={() =>  changeClickedState(index)} clicked={clickedArray[index]} name={heading} imgUrl={heading.svg} />)
+            <MiddleComponent key={heading} onclick={() =>  changeClickedState(index)} clicked={clickedArray[index]} name={heading} imgUrl={heading+"-icon.svg"} />)
           }
 
 
