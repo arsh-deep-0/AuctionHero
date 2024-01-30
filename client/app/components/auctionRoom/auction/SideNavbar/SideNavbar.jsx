@@ -31,9 +31,11 @@ function SideNavbar() {
       {/* middle section - navMenu */}
       <div>
         <div className="w-full flex flex-col gap-2">
+
           {headings.map((heading, index) =>
             <MiddleComponent key={heading} onclick={() =>  changeClickedState(index)} clicked={clickedArray[index]} name={heading} imgUrl={heading.svg} />)
           }
+
 
         </div>
       </div>

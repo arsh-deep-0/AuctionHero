@@ -4,7 +4,7 @@ import WalletContainer from "./WalletContainer"
 
 function TeamsWallet() {
   return (
-    <div className="flex flex-col justify-between h-full gap-4 ">
+    <div className="flex flex-col justify-between h-full gap-8 ">
       <Heading/>
       <WalletContainer/>
     </div>

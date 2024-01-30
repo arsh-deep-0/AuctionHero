@@ -7,7 +7,9 @@ const PlayerHolder = () => {
        
         <div >
           <img
+
             className="w-[24rem] absolute inset-x-0  bottom-0 "
+
             src="/resources/playerImages/Virat Kohli.svg"
             alt=""
           />
