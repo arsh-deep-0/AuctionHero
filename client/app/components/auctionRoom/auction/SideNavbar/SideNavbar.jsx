@@ -1,11 +1,21 @@
 
+import { useState } from "react";
 import MiddleComponent from "./MiddleComponent";
 import Timer from "./Timer";
 
 function SideNavbar() {
-  const clickHandler = () => {
-    console.log("hello");
-  }
+  const [clickedArray, setClickedArray] = useState([false, true, false, false, false]);
+  const headings = ["Team Dashboard", "Rules", "Player Cards", "Auction", "My Team"];
+
+
+  const changeClickedState = (index) => {
+    const newClickedArray = Array(5).fill(false);
+    newClickedArray[index] = true;
+    setClickedArray(newClickedArray);
+    
+  };
+
+
 
 
   return (
@@ -21,16 +31,17 @@ function SideNavbar() {
       {/* middle section - navMenu */}
       <div>
         <div className="w-full flex flex-col gap-2">
-          <MiddleComponent onClicks={clickHandler} name="Team Dashboard" imgUrl="teamdashboard-icon.svg" />
-          <MiddleComponent onClicks={clickHandler} name="Auction" imgUrl="auction-icon.svg" />
-          <MiddleComponent onClicks={clickHandler} name="Rules" imgUrl="rules-icon.svg" />
-          <MiddleComponent onClicks={clickHandler} name="My Team" imgUrl="myteam-icon.svg" />
-          <MiddleComponent onClicks={clickHandler} name="Player Cards" imgUrl="playercards-icon.svg" />
+
+          {headings.map((heading, index) =>
+            <MiddleComponent key={heading} onclick={() =>  changeClickedState(index)} clicked={clickedArray[index]} name={heading} imgUrl={heading.svg} />)
+          }
+
+
         </div>
       </div>
 
       {/* timer section */}
-      <Timer/>
+      <Timer />
 
 
     </div>
