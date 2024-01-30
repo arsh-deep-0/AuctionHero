@@ -21,11 +21,11 @@ function SideNavbar() {
       {/* middle section - navMenu */}
       <div>
         <div className="w-full flex flex-col gap-2">
-          <MiddleComponent onClicks={clickHandler} name="Team Dashboard" imgUrl="teamDashboard.svg" />
-          <MiddleComponent onClicks={clickHandler} name="Auction" imgUrl="auction.svg" />
-          <MiddleComponent onClicks={clickHandler} name="Rules" imgUrl="rules.svg" />
-          <MiddleComponent onClicks={clickHandler} name="My Team" imgUrl="myteam.svg" />
-          <MiddleComponent onClicks={clickHandler} name="Player Cards" imgUrl="playerCards.svg" />
+          <MiddleComponent onClicks={clickHandler} name="Team Dashboard" imgUrl="teamdashboard-icon.svg" />
+          <MiddleComponent onClicks={clickHandler} name="Auction" imgUrl="auction-icon.svg" />
+          <MiddleComponent onClicks={clickHandler} name="Rules" imgUrl="rules-icon.svg" />
+          <MiddleComponent onClicks={clickHandler} name="My Team" imgUrl="myteam-icon.svg" />
+          <MiddleComponent onClicks={clickHandler} name="Player Cards" imgUrl="playercards-icon.svg" />
         </div>
       </div>
 
