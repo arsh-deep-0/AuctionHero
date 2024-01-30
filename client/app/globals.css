@@ -44,6 +44,14 @@
     background-color: #ff00e5;
 }
 
+.text-pink{
+    color: #ff00e5;
+}
+
+.text-blue{
+    color: #0047ff;
+}
+
 .bg-blue {
     background-color: #0047ff;
 }
@@ -79,4 +87,10 @@
 
 .rcb {
     background: linear-gradient(143.7deg, #6a6a6a 50%, #1c1c1c 100%);
+}
+
+@layer utilities {
+    .bg-golden{
+        background: linear-gradient(143.7deg, #462523 -60%, #cb9b51 2%, #f6e27a 45%, #f6f2c0 50%, #f6e27a 55%, #cb9b51 98%, #462523 160%);
+    }
 }
