@@ -1,0 +1,20 @@
+{
+  "name": "auctionheroes",
+  "version": "1.0.0",
+  "description": "A multiplayer web app for Sports Auctions",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "Auction",
+    "IPL",
+    "Sports"
+  ],
+  "author": "Arshdeep Singh",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.1",
+    "express": "^4.18.2"
+  }
+}
