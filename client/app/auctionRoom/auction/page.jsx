@@ -10,7 +10,7 @@ import React from "react";
 function page() {
   return (
     <div className="flex h-screen  bg-gray-300  align-bottom">
-      <div className="w-1/6 ">
+      <div className="w-1/6 py-8 pl-4">
         <SideNavbar />
       </div>
       <div className="flex flex-col  w-5/6">
