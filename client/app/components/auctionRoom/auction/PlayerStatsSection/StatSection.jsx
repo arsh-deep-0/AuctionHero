@@ -1,10 +1,21 @@
-import React from "react";
+import  { useEffect, useState } from "react";
+import axios from "axios";
 
 const StatSection = () => {
+  const [playerName , setPlayerName]= useState('Arsh');
+  useEffect(()=>{
+    axios.get('https://localhost:8080/api/playername').
+    then(response=>{
+      setPlayerName(response.data)
+    }).
+    catch(err =>
+      console.error(err));
+  }, [playerName])
+
   return (
     <div className="flex flex-col gap-4">
       <div className="aoboshi text-2xl text-black  text-center drop-shadow-lg	">
-        <p>Virat Kohli</p>
+        <p>{playerName}</p>
         <img src="" alt="" />
       </div>
       <div className="flex gap-1">
