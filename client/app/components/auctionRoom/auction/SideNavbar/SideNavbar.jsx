@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import MiddleComponent from "./MiddleComponent";
 import Timer from "./Timer";
@@ -19,11 +18,11 @@ function SideNavbar() {
 
 
   return (
-    <div className=" absolute inset-8 bg-white  text-black px-4 py-4 w-1/6 justify-between rounded-md flex flex-col ">
+    <div className="  w-full h-full  bg-white  text-black px-4 py-4  justify-between rounded-md flex flex-col ">
       {/* top section - logo + heading */}
       <div className="flex space-x-3">
         <img src="/resources/logos/leftNavbarLogos/auctionHeroLogo.svg" alt="" />
-        <div className="gabriela font-bold text-xl text-center">
+        <div className="gabriela font-bold text-lg text-center">
           Auction Heroes
         </div>
       </div>
