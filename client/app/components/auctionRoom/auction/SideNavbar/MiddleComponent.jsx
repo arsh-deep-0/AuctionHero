@@ -1,9 +1,6 @@
 import React from 'react'
 
 function MiddleComponent({name  ,imgUrl ,onclick,clicked}) {
-  
-  
-    
   return (
     <button 
     onClick={onclick}

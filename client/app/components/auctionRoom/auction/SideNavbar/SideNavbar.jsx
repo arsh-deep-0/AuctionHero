@@ -22,7 +22,7 @@ function SideNavbar() {
       {/* top section - logo + heading */}
       <div className="flex space-x-3">
         <img src="/resources/logos/leftNavbarLogos/auctionHeroLogo.svg" alt="" />
-        <div className="gabriela font-bold text-xl text-center">
+        <div className="gabriela font-bold text-lg text-center">
           Auction Heroes
         </div>
       </div>
