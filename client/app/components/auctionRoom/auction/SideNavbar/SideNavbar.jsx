@@ -4,7 +4,7 @@ import Timer from "./Timer";
 
 function SideNavbar() {
   const [clickedArray, setClickedArray] = useState([false, true, false, false, false]);
-  const headings = ["Team Dashboard", "Rules", "Player Cards", "Auction", "My Team"];
+  const headings = ["Team Dashboard", "rules", "Player Cards", "auction", "My Team"];
 
 
   const changeClickedState = (index) => {
