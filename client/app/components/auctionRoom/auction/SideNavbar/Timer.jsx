@@ -19,7 +19,6 @@ function Timer() {
   useEffect(() => {
     const interval = setInterval(() => {
       displayTime();
-
     }, 1000);
 
     return () => clearInterval(interval);
@@ -27,7 +26,7 @@ function Timer() {
 
     
   return (
-    <div className="  flex w-full justify-center gap-2  rounded-md items-center bg-black text-white text-md px-3 py-1 border-2 border-white border-solid blue-shadow aoboshi ">
+    <div className="flex w-full justify-center gap-2  rounded-md items-center bg-black text-white text-md px-3 py-1 border-2 border-white border-solid blue-shadow aoboshi ">
     <span>{String(hours).length < 2 ? "0"+String(hours) : hours}</span>
     <span>:</span>
     <span>{String(minutes).length < 2 ? "0"+String(minutes) : minutes}</span>

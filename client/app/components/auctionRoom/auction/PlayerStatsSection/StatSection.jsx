@@ -1,24 +1,52 @@
-import React from "react";
+import  { useEffect, useState } from "react";
+import axios from "axios";
 
 const StatSection = () => {
+  const [playerName , setPlayerName]= useState('Arsh');
+  const [battingPoints, setBattingPoints] = useState(0);
+  const [bowlingPoints, setBowlingPoints] = useState(0);
+  const [wkpoints, setWkPoints] = useState(0);
+
+  // useEffect(()=>{
+  //   axios.get('/api/playername').
+  //   then(response=>{
+  //     setPlayerName(response.data)
+  //   }).
+  //   catch(err =>
+  //     console.error(err));
+  // }, [])
+
+  useEffect(()=>{
+    axios.get('/api/playerData').
+    then(response=>{
+      setPlayerName(response.data.playerName)
+      setBattingPoints(response.data.battingPoints)
+      setBowlingPoints(response.data.bowlingPoints)
+      setWkPoints(response.data.wkPoints)      
+    }).
+    catch(err =>
+      console.error(err));
+  }, [])
+
   return (
     <div className="flex flex-col gap-4">
-      <div className="aoboshi text-2xl text-black font-bold text-center drop-shadow-lg	">
-        Virat Kohli
+      <div className="aoboshi text-2xl text-black  text-center drop-shadow-lg	">
+        <p>{playerName}</p>
+        <img src="" alt="" /> 
       </div>
       <div className="flex gap-1">
-            <div className="flex bg-golden px-3 py-2 gap-4 -skew-x-[20deg] items-center align-middle border-2 border-solid border-white blue-shadow">
-                  <img className="w-4" src="/resources/images/Group 268.svg" alt="" />
-                  <p className="text-xl skew-x-[20deg] font-medium">94</p>
+            <div className="flex bg-golden px-3 py-2 gap-1 -skew-x-[20deg] items-center align-middle border-2 border-solid border-white blue-shadow">
+                  <img className="w-6" src="/resources/playerImages/Group 268.svg" alt="" />
+                  <p className="text-xl skew-x-[20deg] font-medium">{battingPoints}</p>
             </div>
 
             <div className="flex bg-golden px-3 py-2 gap-1 -skew-x-[20deg] border-2 border-solid border-white">
-                  <img className="w-6 skew-x-[20deg]" src="/resources/images/Group 295.svg" alt="" />
-                  <p className="text-xl skew-x-[20deg] font-medium">94</p>
+                  <img className="w-6 skew-x-[20deg]" src="/resources/playerImages/Group 295.svg" alt="" />
+                  <p className="text-xl skew-x-[20deg] font-medium">{bowlingPoints}</p>
             </div>
-            <div className="flex bg-golden px-3 py-2 gap-2 -skew-x-[20deg] border-2 border-solid border-white">
-                  <img className="w-4 skew-x-[20deg]" src="/resources/images/Group 273.svg" alt="" />
-                  <p className="text-xl skew-x-[20deg] font-medium">94</p>
+            <div className="flex bg-golden px-3 py-2 gap-1 -skew-x-[20deg] border-2 border-solid border-white">
+                  <img className="w-6 skew-x-[20deg]" src="/resources/playerImages/Group 273.svg" alt="" />
+                  <p className="text-xl skew-x-[20deg] font-medium">{wkpoints}</p>
 
             </div>
       </div>
