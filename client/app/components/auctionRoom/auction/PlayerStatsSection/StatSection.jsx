@@ -7,14 +7,7 @@ const StatSection = () => {
   const [bowlingPoints, setBowlingPoints] = useState(0);
   const [wkpoints, setWkPoints] = useState(0);
 
-  // useEffect(()=>{
-  //   axios.get('/api/playername').
-  //   then(response=>{
-  //     setPlayerName(response.data)
-  //   }).
-  //   catch(err =>
-  //     console.error(err));
-  // }, [])
+
 
   useEffect(()=>{
     axios.get('/api/playerData').
@@ -34,17 +27,17 @@ const StatSection = () => {
         <p>{playerName}</p>
         <img src="" alt="" /> 
       </div>
-      <div className="flex gap-1">
-            <div className="flex bg-golden px-3 py-2 gap-1 -skew-x-[20deg] items-center align-middle border-2 border-solid border-white blue-shadow">
+      <div className="flex gap-1 text-white">
+            <div className="flex bg-black px-3 py-2 gap-1 -skew-x-[20deg] items-center align-middle border-2 border-solid border-white black-shadow rounded-sm">
                   <img className="w-6" src="/resources/playerImages/Group 268.svg" alt="" />
                   <p className="text-xl skew-x-[20deg] font-medium">{battingPoints}</p>
             </div>
 
-            <div className="flex bg-golden px-3 py-2 gap-1 -skew-x-[20deg] border-2 border-solid border-white">
+            <div className="flex bg-black px-3 py-2 gap-1 -skew-x-[20deg] border-2 border-solid border-white rounded-sm">
                   <img className="w-6 skew-x-[20deg]" src="/resources/playerImages/Group 295.svg" alt="" />
                   <p className="text-xl skew-x-[20deg] font-medium">{bowlingPoints}</p>
             </div>
-            <div className="flex bg-golden px-3 py-2 gap-1 -skew-x-[20deg] border-2 border-solid border-white">
+            <div className="flex bg-black px-3 py-2 gap-1 -skew-x-[20deg] border-2 border-solid border-white rounded-sm">
                   <img className="w-6 skew-x-[20deg]" src="/resources/playerImages/Group 273.svg" alt="" />
                   <p className="text-xl skew-x-[20deg] font-medium">{wkpoints}</p>
 
