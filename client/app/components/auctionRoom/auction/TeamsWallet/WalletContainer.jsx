@@ -31,24 +31,11 @@ function WalletContainer() {
       playersBought: 3,
       playerName: "Manik Raj",
     },
-    {
-      teamName: "kkr",
-      currentWallet: 7.7,
-      totalWallet: 50,
-      playersBought: 10,
-      playerName: "Anurag Bansal",
-    },
-    {
-      teamName: "rcb",
-      currentWallet: 12.6,
-      totalWallet: 50,
-      playersBought: 9,
-      playerName: "Bhaskar Mishra",
-    },
+    
   ];
 
   return (
-    <div className="w-full flex flex-col p-1 bg-white gap-1 rounded-md black-shadow min-w-72">
+    <div className="w-full flex flex-col p-1 bg-white gap-1 rounded-md black-shadow lg:min-w-72">
       {buyersData.map((buyer) => {
         const buyerData = {
           teamName: buyer.teamName,

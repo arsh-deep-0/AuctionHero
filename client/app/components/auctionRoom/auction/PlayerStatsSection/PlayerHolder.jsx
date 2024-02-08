@@ -5,7 +5,7 @@ const PlayerHolder = () => {
     <div className="relative w-full flex flex-col justify-end h-80 items-center scale-110">
       <div className="relative w-4/5 h-60 bg-white rounded-md black-shadow">
         <div className="absolute w-12  rounded-md -left-5 -top-4 z-20 black-shadow border-black border-solid border-2  flex items-center justify-center">
-          <img className="rounded-md" src="/resources/misc/ndia.webp" alt="" />
+          <img className="rounded-md" src="/resources/misc/India.webp" alt="" />
         </div>
         <div className="absolute  bg-black rounded-md -left-10 -bottom-2 z-20 black-shadow border-white border-solid border-2 flex flex-col text-white text-center aoboshi py-2 px-1 justify-center gap-2">
           <div className="">
