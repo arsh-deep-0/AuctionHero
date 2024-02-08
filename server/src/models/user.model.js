@@ -11,6 +11,10 @@ const userSchema = new mongoose.Schema(
       lowercase: true,
       index: true,
     },
+    fullName: {
+      type: String,
+      required: true,
+    },
     email: {
       type: String,
       required: true,
@@ -42,8 +46,34 @@ userSchema.pre("save", async function (next) {
   }
 });
 
-userSchema.methods.isPassswordCorrect = async function(password){
-    return await bcrypt.compare(password, this.password)
-}
+userSchema.methods.isPassswordCorrect = async function (password) {
+  return await bcrypt.compare(password, this.password);
+};
+
+userSchema.methods.generateAccessToken = async function () {
+  return jwt.sign(
+    {
+      _id: this._id,
+      email: this.email,
+      userName: this.userName,
+      fullName: this.fullName,
+    },
+    process.env.ACCESS_TOKEN_SECRET,
+    {
+      expiresIn: process.env.ACCESS_TOKEN_EXPIRY,
+    }
+  );
+};
+userSchema.methods.generateRefreshToken = async function () {
+  return jwt.sign(
+    {
+      _id: this._id,
+    },
+    process.env.ACCESS_TOKEN_SECRET,
+    {
+      expiresIn: process.env.ACCESS_TOKEN_EXPIRY,
+    }
+  );
+};
 
 export const User = mongoose.model("User", userSchema);
