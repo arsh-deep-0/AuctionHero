@@ -49,7 +49,7 @@ function page() {
           </div>
 
           <div className="flex flex-col w-full h-full lg:w-5/6 items-center">
-            <div className="lg:hidden h-[40%] flex flex-row px-4 justify-between flex-wrap lg:flex-row gap-4   lg:gap-12 lg:justify-around lg:align-top py-4 w-full  text-black lg:inset-8 z-10">
+            <div className="lg:hidden h-[30%] flex flex-row px-4 justify-between flex-wrap lg:flex-row gap-4   lg:gap-12 lg:justify-around lg:align-top pt-4 w-full  text-black lg:inset-8 z-10">
               <div className="w-[40%] lg:w-1/4 h-[40%]">
                 <PSS />
               </div>
@@ -57,8 +57,8 @@ function page() {
                 <TeamsWallet />
               </div>
             </div>
-            <div className="lg:hidden flex justify-center h-[40%] w-4/5">
-              <div className="lg:hidden w-[40%] lg:w-1/4 h-[40%] scale-75 ">
+            <div className="lg:hidden flex justify-center h-[30%] w-4/5">
+              <div className="lg:hidden w-[40%] lg:w-1/4 max-h-[30%] scale-75 ">
                 <BiddingSectionMobile />
               </div>
             </div>

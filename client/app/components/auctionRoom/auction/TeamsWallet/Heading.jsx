@@ -1,7 +1,7 @@
 
 function Heading() {
     return (
-      <div className="w-full black-shadow border-white border-solid border-2 bg-golden rounded-md tenor-sans font-bold text-center py-1 text-base lg:text-lg lg:min-w-72">
+      <div className="w-full black-shadow border-white border-solid border-2 bg-golden rounded-md tenor-sans font-bold text-center py-1 text-sm lg:text-lg lg:min-w-72">
           Teams Wallet
       </div>
     )
