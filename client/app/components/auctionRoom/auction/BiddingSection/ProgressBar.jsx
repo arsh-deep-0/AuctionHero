@@ -3,7 +3,7 @@ import React from 'react'
 function ProgressBar({soldPlayers, unsoldPlayers , totalPlayers}) {
 
     return (
-        <div className='bg-golden gap-4 rounded-md text-white border-2 border-solid border-white blue-shadow p-2 px-4 w-full flex-col flex  items-center'>
+        <div className='bg-white gap-4 rounded-md text-white border-2 border-solid border-white black-shadow p-2 px-4 w-full flex-col flex  items-center'>
             <div className='text-black w-full justify-between rounded-md flex'>
                 <div className='flex justify-center flex-col items-center aoboshi text-pink' >
                     <p>Sold</p>

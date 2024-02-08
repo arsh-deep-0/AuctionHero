@@ -4,7 +4,7 @@ import Timer from "./Timer";
 
 function SideNavbar() {
   const [clickedArray, setClickedArray] = useState([false, true, false, false, false]);
-  const headings = ["Team Dashboard", "Rules", "Player Cards", "Auction", "My Team"];
+  const headings = ["Team Dashboard", "rules", "Player Cards", "auction", "My Team"];
 
 
   const changeClickedState = (index) => {
@@ -18,11 +18,11 @@ function SideNavbar() {
 
 
   return (
-    <div className="  w-full h-full  bg-white  text-black px-4 py-4  justify-between rounded-md flex flex-col ">
+    <div className="  w-full h-full  bg-white black-shadow  text-black px-4 py-4  justify-between rounded-md flex flex-col ">
       {/* top section - logo + heading */}
       <div className="flex space-x-3">
         <img src="/resources/logos/leftNavbarLogos/auctionHeroLogo.svg" alt="" />
-        <div className="gabriela font-bold text-xl text-center">
+        <div className="gabriela font-bold text-lg text-center">
           Auction Heroes
         </div>
       </div>
@@ -32,7 +32,7 @@ function SideNavbar() {
         <div className="w-full flex flex-col gap-2">
 
           {headings.map((heading, index) =>
-            <MiddleComponent key={heading} onclick={() =>  changeClickedState(index)} clicked={clickedArray[index]} name={heading} imgUrl={heading.svg} />)
+            <MiddleComponent key={heading} onclick={() =>  changeClickedState(index)} clicked={clickedArray[index]} name={heading} imgUrl={heading+"-icon.svg"} />)
           }
 
 
