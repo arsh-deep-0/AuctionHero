@@ -24,14 +24,20 @@ const teamSchema = new mongoose.Schema({
     required: true,
     default: 0,
   },
-  playersBought: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Team",
-  }],
+  playersBought: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Player",
+    },
+  ],
   isComplete: {
     type: Boolean,
     required: true,
     default: false,
+  },
+  teamPoints: {
+    type: Number,
+    required: true,
   },
 });
 

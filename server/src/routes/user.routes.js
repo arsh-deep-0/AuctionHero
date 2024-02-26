@@ -6,13 +6,14 @@ import {
 } from "../controllers/user.controller.js";
 import { upload } from "../middlewares/multer.middleware.js";
 import { verifyJWT } from "../middlewares/auth.middleware.js";
+import { refreshAccessToken } from "../controllers/user.controller.js";
 
 const router = new Router();
 
 router.route("/register").post(
   upload.fields([
     {
-      name: "profileImage/.",
+      name: "profileImage",
       maxCount: 1,
     },
     {
@@ -27,5 +28,6 @@ router.route("/login").post(loginUser);
 
 //secure routes
 router.route("/logout").post(verifyJWT, logoutUser);
+router.route("/refresh-token").post(refreshAccessToken)
 
 export default router;
