@@ -13,8 +13,8 @@ import React from "react";
 
 function page() {
   return (
-    <div className="min-h-screen w-screen">
-      <div className="absolute z--10 w-full min-h-screen flex flex-col justify-between">
+    <div className="min-h-screen lg:max-h-screen w-screen">
+      <div className="absolute z--10 w-full min-h-screen h-full lg:max-h-screen flex flex-col justify-between">
         <img
           className="max-w-[100%] w-[100%] translate-x-[0%]  z--10  lg:max-w-[100%] lg:w-[100%] lg:translate-x-0"
           src="/resources/misc/upper-blob.svg"
@@ -26,7 +26,7 @@ function page() {
           alt=""
         />
       </div>
-      <div className="flex flex-col min-h-screen  bg-white px-4 py-4 bg-wire z-10">
+      <div className="flex flex-col min-h-screen   bg-white px-4 py-4 bg-wire z-10">
         <div className="flex px-2 lg:px-4 gap-4 justify-between bg-white py-1 rounded-md black-shadow z-10">
           <div className="flex gap-1 lg:gap-2 items-center">
             <img
@@ -43,7 +43,7 @@ function page() {
             <ProfileLogo />
           </div>
         </div>
-        <div className="flex-col  flex  lg:flex-row  lg:align-bottom min-h-screen h-full z-10">
+        <div className="flex-col  flex  lg:flex-row  lg:align-bottom min-h-screen lg:max-h-screen lg:min-h-[100%] h-full z-10">
           <div className="hidden lg:flex w-[15%] py-4 ">
             <SideNavbar />
           </div>

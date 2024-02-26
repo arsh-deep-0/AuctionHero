@@ -1,13 +1,11 @@
 import dotenv from "dotenv/config";
 import cors from "cors";
 import connectDB from "./db/index.js";
-import express from "express";
+import {app} from "./app.js"
 
-const app = express();
+const port = process.env.PORT || 8081;
 
-const port = process.env.PORT || 8080;
 
-app.use(cors());
 
 connectDB()
   .then(
@@ -20,7 +18,7 @@ connectDB()
   });
 
 app.get("/", (req, res) => {
-  res.send("hello world");
+  res.send("hello world"); 
 });
 
 const playerData = {
