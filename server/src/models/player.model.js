@@ -6,12 +6,12 @@ const playerSchema = new mongoose.Schema(
     playerFirstName: {
       type: String,
       required: true,
-      unique: true,
+    
     },
     playerLastName: {
       type: String,
       required: true,
-      unique: true,
+     
     },
     battingPoints: {
       type: Number,
@@ -36,6 +36,7 @@ const playerSchema = new mongoose.Schema(
     currentPrice: {
       type: Number,
       required: true,
+      default:0
     },
     isSold: {
       type: Boolean,
@@ -44,12 +45,16 @@ const playerSchema = new mongoose.Schema(
     },
     currentBidder: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Player",
+      ref: "Team",
     },
     currentTeam: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Player",
+      ref: "Team",
     },
+    nationality:{
+      type: String,
+      required: true,
+    }
   },
   { timestamps: true }
 );

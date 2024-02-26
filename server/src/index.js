@@ -1,7 +1,6 @@
 import dotenv from "dotenv/config";
-import cors from "cors";
 import connectDB from "./db/index.js";
-import {app} from "./app.js"
+import {httpServer} from "./app.js"
 
 const port = process.env.PORT || 8081;
 
@@ -9,7 +8,7 @@ const port = process.env.PORT || 8081;
 
 connectDB()
   .then(
-    app.listen(port, () => {
+    httpServer.listen(port, () => {
       console.log(`app listening on port ${port}`);
     })
   )
@@ -17,17 +16,17 @@ connectDB()
     console.log("MongoDB connection Failed!", error);
   });
 
-app.get("/", (req, res) => {
-  res.send("hello world"); 
-});
+// app.get("/", (req, res) => {
+//   res.send("hello world"); 
+// });
 
-const playerData = {
-  playerName: "Kajal Soni",
-  battingPoints: 57,
-  bowlingPoints: 21,
-  wkPoints: 71,
-};
+// const playerData = {
+//   playerName: "Kajal Soni",
+//   battingPoints: 57,
+//   bowlingPoints: 21,
+//   wkPoints: 71,
+// };
 
-app.get("/api/playerData", (req, res) => {
-  res.send(playerData);
-});
+// app.get("/api/playerData", (req, res) => {
+//   res.send(playerData);
+// });
