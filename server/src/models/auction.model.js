@@ -2,9 +2,10 @@ import mongoose from "mongoose";
 
 const auctionSchema = new mongoose.Schema(
   {
-    auctionRoomId: {
+    auctionRoomID: {
       type: String,
       required: true,
+      index :true,
     },
     auctionName: {
       type: String,
@@ -15,6 +16,11 @@ const auctionSchema = new mongoose.Schema(
       ref: "User",
       required: true,
     },
+    buyers:[{
+      type:mongoose.Schema.Types.ObjectId,
+      ref:"User",
+      required: true,
+    }],
     date: {
       type: Date,
       required: true,
@@ -22,9 +28,8 @@ const auctionSchema = new mongoose.Schema(
     auctionSummary: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "AuctionSummary",
-      required: true,
     },
-    waitingRoomId: {
+    waitingRoomID: {
       type: String,
       required: true,
     },
@@ -37,4 +42,4 @@ const auctionSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-export const AuctionRules = mongoose.model("Auction", auctionSchema);
+export const Auction = mongoose.model("Auction", auctionSchema);

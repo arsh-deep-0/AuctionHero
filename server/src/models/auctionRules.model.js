@@ -2,10 +2,6 @@ import mongoose from "mongoose";
 
 const auctionRulesSchema = new mongoose.Schema(
   {
-    auctionId: {
-      type: String,
-      required: true,
-    },
     buyersCount: {
       type: Number,
       required: true,
