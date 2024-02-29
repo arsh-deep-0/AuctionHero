@@ -63,6 +63,7 @@ const sellPlayer = asyncHandler(async (req, res) => {
 
 const sellPlayerSocket = async (sellingData) => {
   const { buyer, player } = sellingData;
+  console.log(buyer,player);
   const contract = await Contract.create({ buyer_ID: buyer, player_ID: player });
   console.log(contract);
 

@@ -39,12 +39,14 @@ import userRouter from "./routes/user.routes.js";
 import auctionRulesRouter from "./routes/auctionRules.routes.js";
 import playerRouter from "./routes/player.routes.js";
 import teamRouter from "./routes/team.routes.js";
+import auctionRouter from "./routes/auction.routes.js";
 
 //routes declarations
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/auction-rules", auctionRulesRouter);
 app.use("/api/v1/player", playerRouter);
 app.use("/api/v1/team", teamRouter);
+app.use("/api/v1/auction", auctionRouter);
 
 app.get("/", (req, res) => {
   res.send("hello world");

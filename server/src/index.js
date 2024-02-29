@@ -1,10 +1,10 @@
 import dotenv from "dotenv/config";
 import connectDB from "./db/index.js";
-import {httpServer} from "./app.js"
+import { httpServer } from "./app.js";
+import { asyncHandler } from "./utils/asyncHandler.js";
+import { Auction } from "./models/auction.model.js";
 
 const port = process.env.PORT || 8081;
-
-
 
 connectDB()
   .then(
@@ -16,8 +16,11 @@ connectDB()
     console.log("MongoDB connection Failed!", error);
   });
 
+
+
+
 // app.get("/", (req, res) => {
-//   res.send("hello world"); 
+//   res.send("hello world");
 // });
 
 // const playerData = {
