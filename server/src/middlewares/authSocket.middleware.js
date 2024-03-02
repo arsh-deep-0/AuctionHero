@@ -20,7 +20,7 @@ const verifyJWT = asyncHandler(async (socket, next) => {
     if (!user) {
       throw new ApiError(401, "Invalid Access Token");
     }
-
+ 
     socket.userID = user._id; // Attach userID to the socket
 
     next();

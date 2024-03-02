@@ -7,7 +7,7 @@ const auctionSocket = (socket) => {
   return () => {
     socket.on("addBuyerToAuction", async (joiningData) => {
       try {
-        const result = await addBuyerToAuction(joiningData);
+        const result = await addBuyerToAuction(socket , joiningData);
         socket.emit("addBuyerToAuctionResult", result);
       } catch (error) {
         console.error("Error in addBuyerToAuction:", error);
@@ -22,6 +22,8 @@ const auctionSocket = (socket) => {
         console.error("Error in removeBuyerFromAuction:", error);
       }
     });
+
+
   };
 };
 
