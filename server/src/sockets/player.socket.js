@@ -7,8 +7,8 @@ const playerSocket = (socket) => {
 
     socket.on("sellPlayer", async (data) => {
       console.log("hi", data);
-      await sellPlayerSocket(data);
-      socket.emit("playerSold", data);
+      const soldData =await sellPlayerSocket(socket,data);
+      socket.emit("playerSold", soldData);
     });
 
     socket.on('getPlayer', async (data)=>{

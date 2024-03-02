@@ -10,6 +10,13 @@ const contractSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "Player",
     },
+    auction_ID: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Auction",
+    },
+    amountSold:{
+      type:Number
+    }
   },
   {
     timestamps: true,
@@ -17,3 +24,5 @@ const contractSchema = new mongoose.Schema(
 );
 
 export const Contract = new mongoose.model("Contract", contractSchema);
+
+Contract.collection.createIndex({ auction_ID: 1 });

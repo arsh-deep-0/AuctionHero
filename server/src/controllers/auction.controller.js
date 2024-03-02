@@ -47,26 +47,28 @@ const createAuction = asyncHandler(async (req, res) => {
     .json(new ApiResponse(201, createdAuction, "Auction created succesfully"));
 });
 
-const addBuyerToAuction = async (joiningData) => {
+const addBuyerToAuction = async (socket, joiningData) => {
   try {
     const { userID, waitingRoomID } = joiningData;
-    const user = await User.findOne({ _id: userID });
-    if (!user) {
-      throw new ApiError(404, "No such user exists");
+    const user = await getUser(userID);
+    console.log("joining data", joiningData);
+    console.log(waitingRoomID);
+    const auction = await getAuction(waitingRoomID);
+
+    const isMember = await isAuctionMember(userID, auction);
+    console.log("isMember: ", isMember);
+    if (isMember) {
+      return { waitingRoomID, userID, wasMember: true };
     }
 
-    const auction = await Auction.findOne({ waitingRoomID });
-
-    if (auction.buyers.includes(userID)) {
-      // Emit an event indicating that the user is already present in the buyer array
-      return { waitingRoomID, userID, alreadyAdded: true };
-    }
+    console.log(user);
+    await isHostOrUserHimself(user, socket, auction); // Check if the user attempting to remove the buyer is the buyer or the auction host
 
     auction.buyers.push(userID);
     await auction.save({ validateBeforeSave: false });
 
     // Emit an event indicating successful addition of the buyer
-    return { waitingRoomID, userID, alreadyAdded: false };
+    return { waitingRoomID, userID, wasMember: false };
   } catch (error) {
     console.error("Error in addBuyerToAuction:", error);
     // Return an error object if there's an error
@@ -77,39 +79,74 @@ const addBuyerToAuction = async (joiningData) => {
 const removeBuyerFromAuction = async (socket, removingData) => {
   try {
     const { userID, waitingRoomID } = removingData;
-    const user = await User.findOne({ _id: userID });
-    if (!user) {
-      throw new ApiError(404, "No such user exists");
+    const user = await getUser(userID);
+    console.log("removing data", removingData);
+    console.log(waitingRoomID);
+    const auction = await getAuction(waitingRoomID);
+
+    const isMember = await isAuctionMember(userID, auction);
+    if (!isMember) {
+      return { waitingRoomID, userID, wasMember: false };
     }
 
-    const auction = await Auction.findOne({ waitingRoomID });
-    console.log(auction);
-    if (!auction) {
-      throw new ApiError(404, "waiting Room does not exist");
-    }
-
-    if (!auction.buyers.includes(userID)) {
-      return { waitingRoomID, userID, alreadyRemoved: true };
-    }
-
-    console.log("user removing",socket.userID)
-    // Check if the user attempting to remove the buyer is the buyer or the auction host
-    if (
-      socket.userID.toString() !== user._id.toString() &&
-      socket.userID.toString() !== auction.host.toString()
-    ) {
-      throw new ApiError(403, "Unauthorized to remove buyer from auction");
-    }
-
+    await isHostOrUserHimself(user, socket, auction); // Check if the user attempting to remove the buyer is the buyer himself or the auction host
     auction.buyers.pull(userID);
     await auction.save({ validateBeforeSave: false });
 
-    return { waitingRoomID, userID, alreadyRemoved: false };
+    return { waitingRoomID, userID, wasMember: true };
   } catch (error) {
     console.error("Error in removeBuyerToAuction:", error);
-    // Return an error object if there's an error
     return { error: error.message };
   }
 };
 
-export { createAuction, addBuyerToAuction, removeBuyerFromAuction };
+const getAuctionByRoomID = async (auctionRoomID) => {
+  console.log(auctionRoomID);
+  const auction = await Auction.findOne({ auctionRoomID });
+  console.log(auction);
+  if (!auction) {
+    throw new ApiError(404, "Room does not exist");
+  }
+  return auction;
+};
+
+const isHostOrUserHimself = async (user, socket, auction) => {
+  if (
+    socket.userID.toString() !== user._id.toString() &&
+    socket.userID.toString() !== auction.host.toString()
+  ) {
+    throw new ApiError(403, "Unauthorized request");
+  }
+};
+
+const getUser = async (userID) => {
+  const user = await User.findOne({ _id: userID });
+  if (!user) {
+    throw new ApiError(404, "No such user exists");
+  }
+  return user;
+};
+
+const isAuctionMember = async (userID, auction) => {
+  if (auction.buyers.includes(userID)) {
+    console.log("Auction member already exists");
+    return true;
+  }
+  return false;
+};
+
+const isHost = async (socket, auction) => {
+  if (auction.host.toString() !== socket.userID.toString()) {
+    throw new ApiError(403, "Unauthorized request");
+  }
+};
+
+export {
+  createAuction,
+  addBuyerToAuction,
+  removeBuyerFromAuction,
+  getAuctionByRoomID,
+  isHostOrUserHimself,
+  getUser,
+  isHost,
+};
