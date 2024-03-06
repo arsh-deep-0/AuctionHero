@@ -53,11 +53,12 @@ const addBuyerToAuction = async (socket, joiningData) => {
     const user = await getUser(userID);
     console.log("joining data", joiningData);
     console.log(waitingRoomID);
-    const auction = await getAuction(waitingRoomID);
+    const auction = await getAuctionByRoomID(waitingRoomID);
 
     const isMember = await isAuctionMember(userID, auction);
     console.log("isMember: ", isMember);
     if (isMember) {
+      socket.join(`${waitingRoomID}`)
       return { waitingRoomID, userID, wasMember: true };
     }
 
@@ -66,6 +67,8 @@ const addBuyerToAuction = async (socket, joiningData) => {
 
     auction.buyers.push(userID);
     await auction.save({ validateBeforeSave: false });
+
+    socket.join(`${waitingRoomID}`)
 
     // Emit an event indicating successful addition of the buyer
     return { waitingRoomID, userID, wasMember: false };
@@ -82,10 +85,11 @@ const removeBuyerFromAuction = async (socket, removingData) => {
     const user = await getUser(userID);
     console.log("removing data", removingData);
     console.log(waitingRoomID);
-    const auction = await getAuction(waitingRoomID);
+    const auction = await getAuctionByRoomID(waitingRoomID);
 
     const isMember = await isAuctionMember(userID, auction);
     if (!isMember) {
+      socket.leave(`${waitingRoomID}`)
       return { waitingRoomID, userID, wasMember: false };
     }
 
@@ -93,6 +97,7 @@ const removeBuyerFromAuction = async (socket, removingData) => {
     auction.buyers.pull(userID);
     await auction.save({ validateBeforeSave: false });
 
+    socket.leave(`${waitingRoomID}`)
     return { waitingRoomID, userID, wasMember: true };
   } catch (error) {
     console.error("Error in removeBuyerToAuction:", error);
@@ -149,4 +154,5 @@ export {
   isHostOrUserHimself,
   getUser,
   isHost,
+  isAuctionMember
 };

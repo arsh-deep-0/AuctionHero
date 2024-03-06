@@ -13,6 +13,10 @@ const playerSchema = new mongoose.Schema(
       required: true,
      
     },
+    order:{
+      type:Number,
+      required: true,
+    },
     battingPoints: {
       type: Number,
       required: true,
