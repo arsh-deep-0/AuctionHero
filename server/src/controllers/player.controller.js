@@ -9,7 +9,9 @@ import {
   isHostOrUserHimself,
   getAuctionByRoomID,
   isHost,
+  isAuctionMember,
 } from "./auction.controller.js";
+import { AuctionRules } from "../models/auctionRules.model.js";
 
 const createPlayer = asyncHandler(async (req, res) => {
   const {
@@ -22,6 +24,7 @@ const createPlayer = asyncHandler(async (req, res) => {
     basePrice,
     currentPrice,
     isSold,
+    nationality,
   } = req.body;
 
   const player = await Player.create({
@@ -34,6 +37,7 @@ const createPlayer = asyncHandler(async (req, res) => {
     basePrice,
     currentPrice,
     isSold,
+    nationality,
   });
 
   const createdPlayer = await Player.findOne(player._id);
@@ -76,10 +80,10 @@ const sellPlayerSocket = async (socket, sellingData) => {
     const auction = await Auction.findOne({ _id: auctionID });
     isHost(socket, auction);
 
-    const playerAlreadySold = await searchContract(auctionID, player);
-    console.log(playerAlreadySold)
+    const playerAlreadySold = await iSAlreadySold(auctionID, player);
+    console.log(playerAlreadySold);
     if (playerAlreadySold) {
-      return {response : "player already sold"}
+      return { response: "player already sold" };
       //throw new ApiError(400, "Player already sold");
     }
 
@@ -106,12 +110,21 @@ const sellPlayerSocket = async (socket, sellingData) => {
   }
 };
 
-const getAllplayers = async ({ socket, auctionRoomID }) => {
-  const auction = getAuctionByRoomID(auctionRoomID);
+const getAllplayers = async ( socket, auctionRoomID ) => {
+  const auction = await getAuctionByRoomID(auctionRoomID);
+  await isAuctionMember(socket.userID, auction);
+  const auctionRules = await AuctionRules.findOne({
+    _id: auction.auctionRules,
+  });
+  
+  const players = await Player.find().limit(auctionRules.maxPlayers.buyerCount);
+  return players;
 };
 
-// Function to search for documents with a particular auction_id and check if player_id exists
-const searchContract = async (auctionId, playerId) => {
+
+
+// Function to search for documents with a particular auction_id and check if player_id exists (this will be used to check if player is already sold or not)
+const iSAlreadySold = async (auctionId, playerId) => {
   try {
     // Query for documents with the specified auction_id
     const contracts = await Contract.find({ auction_ID: auctionId });
@@ -128,4 +141,5 @@ const searchContract = async (auctionId, playerId) => {
   }
 };
 
-export { createPlayer, sellPlayer, sellPlayerSocket };
+
+export { createPlayer, sellPlayer, sellPlayerSocket, getAllplayers };

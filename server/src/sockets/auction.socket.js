@@ -3,12 +3,13 @@ import {
   removeBuyerFromAuction,
 } from "../controllers/auction.controller.js";
 
-const auctionSocket = (socket) => {
+const auctionSocket = (io,socket) => {
   return () => {
     socket.on("addBuyerToAuction", async (joiningData) => {
       try {
         const result = await addBuyerToAuction(socket , joiningData);
-        socket.emit("addBuyerToAuctionResult", result);
+        console.log(socket.rooms);
+        io.to(`${joiningData.waitingRoomID}`).emit("addBuyerToAuctionResult", result);
       } catch (error) {
         console.error("Error in addBuyerToAuction:", error);
       }
@@ -17,7 +18,7 @@ const auctionSocket = (socket) => {
     socket.on("removeBuyerFromAuction", async (removingData) => {
       try {
         const result = await removeBuyerFromAuction(socket, removingData);
-        socket.emit("removeBuyerFromAuctionResult", result);
+        io.to(`${joiningData.waitingRoomID}`).emit("removeBuyerFromAuctionResult", result);
       } catch (error) {
         console.error("Error in removeBuyerFromAuction:", error);
       }
